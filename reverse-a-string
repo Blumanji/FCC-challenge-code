@@ -1,0 +1,22 @@
+/*
+Reverse the provided string.
+
+You may need to turn the string into an array before you can reverse it.
+
+Your result must be a string.
+*/
+
+function reverseString(str) {
+  
+  var reverseArray = [];
+  
+  reverseArray = str.split("");
+  
+  reverseArray.reverse();
+  
+  str = reverseArray.join("");
+  
+  return str;
+}
+
+reverseString("pretty sure this works with anything");
