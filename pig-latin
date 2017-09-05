@@ -1,0 +1,31 @@
+
+function translatePigLatin(str) {
+  
+  var vowelsindex = "aeiou";
+  var concluster = "";
+  
+  str = str.split("");
+  
+  for (var i = 0; i <= str.length; i++){
+    if (vowelsindex.indexOf(str[i]) >= 0){
+      concluster = str.slice(0, i);
+      concluster = concluster.join('');
+      break;
+    }
+  }
+  
+  
+  if (vowelsindex.indexOf(str[0]) >=0) {
+    str.push("way");
+  } else { 
+    str.splice(0, concluster.length);
+    str.push(concluster);
+    str.push("ay");
+  }
+  
+  str = str.join('');
+  
+  return str;
+}
+
+translatePigLatin("consonant");
