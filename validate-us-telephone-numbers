@@ -1,0 +1,85 @@
+/*
+Return true if the passed string is a valid US phone number.
+
+The user may fill out the form field any way they choose as long as it is a valid US number. 
+The following are examples of valid formats for US numbers (refer to the tests below for other variants):
+
+555-555-5555
+(555)555-5555
+(555) 555-5555
+555 555 5555
+5555555555
+1 555 555 5555
+
+For this challenge you will be presented with a string such as 800-692-7753 or 8oo-six427676;laskdjf. 
+Your job is to validate or reject the US phone number based on any combination of the formats provided above. 
+The area code is required. If the country code is provided, you must confirm that the country code is 1. 
+Return true if the string is a valid US phone number; otherwise return false.
+*/
+
+
+
+function telephoneCheck(str) {
+  // Good luck!
+  
+  var formats = {
+    
+  };
+  
+  
+  var valid1 = /1\s\d\d\d\s\d\d\d\s\d\d\d\d/.test(str);
+  var valid2 = /1\s\(\d\d\d\)\s\d\d\d\-\d\d\d\d/.test(str);
+  var valid3 = /1\(\d\d\d\)\d\d\d\-\d\d\d\d/.test(str);
+  var valid4 = /1\s\d\d\d\-\d\d\d\-\d\d\d\d/.test(str);
+  
+  var valid5 = /\d\d\d\-\d\d\d\-\d\d\d\d/.test(str);
+  var valid6 = /\d\d\d\d\d\d\d\d\d\d/.test(str);
+  var valid7 = /\(\d\d\d\)\d\d\d\-\d\d\d\d/.test(str);
+  var digitCount = str.replace(/\D/g, "").length;
+  
+  
+  if (str.search(/[^0123456789()\s\-]/g) >= 1) {
+    return false;
+  }
+  
+  if (digitCount < 10 || digitCount > 11) {
+    return false;
+  }
+  
+  if (str[0] == '-') {
+    return false;
+  }
+  
+  if (valid1) {
+    return true;
+  }
+  
+  if (valid2) {
+    return true;
+  }
+  
+  if (valid3) {
+    return true;
+  }
+  
+  if (valid4) {
+    return true;
+  }
+  
+  if (valid5 && str.length == 12) {
+    return true;
+  }
+  
+  if (valid6 && str.length == 10) {
+    return true;
+  }
+  
+  if (valid7 && str.length == 13) {
+    return true;  
+  }
+  
+  return false;
+}
+
+
+telephoneCheck("1 555-555-5555");
