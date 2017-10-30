@@ -1,0 +1,33 @@
+/*
+Sum all the prime numbers up to and including the provided number.
+
+A prime number is defined as a number greater than one and having only two divisors, one and itself. For example, 2 is a prime number because it's only divisible by one and two.
+
+The provided number may not be a prime.
+*/
+
+function sumPrimes(num) {
+  
+  function primesBelow(n) {
+  var sieve = new Array(n);
+  var primes = [];
+  for (var test = 2; test < n; ++test) {
+    if (sieve[test]) {
+      // NOT PRIME
+    }
+    else {
+      primes.push(test);
+      for (var pm = test; pm < n; pm += test)
+        sieve[pm] = true;
+    }
+  }
+  return primes;
+}
+  
+  
+  return primesBelow(num+1).reduce(function(acc, curr){
+    return acc + curr;
+  }, 0);
+}
+
+sumPrimes(300000);
